@@ -1,6 +1,7 @@
 package co.edu.uniquindio.poo;
 
 import java.util.Collection;
+import java.util.Collections;
 import java.util.LinkedList;
 
 
@@ -12,7 +13,7 @@ public class Veterinaria {
 
     // CONSTRUCTOR
 
-    public Veterinaria(String nombre, Collection<Mascota> listaMascotas) {
+    public Veterinaria(String nombre) {
         this.nombre = nombre;
         this.listaMascotas = new LinkedList<>();
 
@@ -33,33 +34,33 @@ public class Veterinaria {
     }
 
     public Collection<Mascota> getListaMascotas() {
-        return listaMascotas;
+        return Collections.unmodifiableCollection(listaMascotas);
     }
 
-    public String agregarMascota (Mascota nuevaMascota, Collection<Mascota> listaMascota){
+    public void agregarMascota (Mascota nuevaMascota){
 
-	String mensaje = "";
-
-	for (Mascota mascota : listaMascotas){
-
-		if(mascota.ID() == nuevaMascota.getID()){
-		
-		mensaje = "La mascota ya existe";
-
-		return mensaje;
-
-		}
-
-		else {
-
-		listaMascota.add(nuevaMascota);
-		
-		mensaje = "La mascota fue anadida con exito";
-
-		}
-
-	}
-		return mensaje;
+	    assert !verificarMascota(nuevaMascota) : "La mascota no existe";
+                
+		        listaMascotas.add(nuevaMascota);
 	
+}
+
+public boolean verificarMascota (Mascota nuevMascota){
+
+
+    var respuesta = false;
+
+    for (var mascota : listaMascotas){
+
+        if (mascota.ID() == nuevMascota.ID()) {
+
+            respuesta = true;
+
+
+            
+        }
+    }
+return respuesta;
+
 }
 }

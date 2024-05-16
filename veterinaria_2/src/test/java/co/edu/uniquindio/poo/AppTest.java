@@ -50,11 +50,17 @@ public class AppTest {
 
     public void agregarMascota(){
 
-        Veterinaria veterinaria = new Veterinaria("Amigos Peludos", null);
+        Veterinaria veterinaria = new Veterinaria("Amigos Peludos");
 
         Mascota mascota1 = new Mascota(1, 9, 20.0, "Plata", "Kira", "Canino", "Husky", "Femenino");
+        Mascota mascota2 = new Mascota(1, 9, 20.0, "Plata", "Kira", "Canino", "Husky", "Femenino");
 
-        veterinaria.agregarMascota(mascota1, null);
+        veterinaria.agregarMascota(mascota1);
+
+        veterinaria.agregarMascota(mascota2);
+
+                assertEquals(1, veterinaria.getListaMascotas().size());
+
 
         System.out.println(veterinaria.getListaMascotas());
 
@@ -65,7 +71,9 @@ public class AppTest {
 
     public void veterinariaNula(){
 
-        Veterinaria veterinaria = new Veterinaria(null, null);
+       
+        
+        assertThrows(Throwable.class, ()->new Veterinaria(null));
 
     
     }
@@ -74,13 +82,18 @@ public class AppTest {
 
     public void agregarMascotaRepetida(){
 
-        Veterinaria veterinaria = new Veterinaria("Amigos peludos", null);
+        Veterinaria veterinaria = new Veterinaria("Amigos peludos");
 
         Mascota mascota1 = new Mascota(1, 21, 17.0, "Cafe", "Carlos", "Canino", "Pincher", "Masculino");
         Mascota mascota2 = new Mascota(1, 21, 17.0, "Cafe", "Carlos", "Canino", "Pincher", "Masculino");
 
-        veterinaria.agregarMascota(mascota1, null);
-        veterinaria.agregarMascota(mascota2, null);
+
+        veterinaria.agregarMascota(mascota1);
+
+        assertThrows(Throwable.class, ()->veterinaria.agregarMascota(mascota2));
+
+        
+        assertEquals(1, veterinaria.getListaMascotas().size());
 
     }
 }
