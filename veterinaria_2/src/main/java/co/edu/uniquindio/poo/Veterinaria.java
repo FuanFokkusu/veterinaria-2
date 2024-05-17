@@ -3,6 +3,7 @@ package co.edu.uniquindio.poo;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.LinkedList;
+import java.util.List;
 
 
 public class Veterinaria {
@@ -60,7 +61,21 @@ public boolean verificarMascota (Mascota nuevMascota){
             
         }
     }
-return respuesta;
+    return respuesta;
+    }
 
-}
+    public List listaMayoresDe10(){
+
+        List listaMayores = new LinkedList<>();
+
+        for (var mascota : listaMascotas){
+
+            if (mascota.ID() > 10) {
+                
+
+                listaMayores.add(mascota);
+            }
+        }
+        return listaMayores;
+    }
 }

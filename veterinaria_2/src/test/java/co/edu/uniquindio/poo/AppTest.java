@@ -10,6 +10,8 @@ package co.edu.uniquindio.poo;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import java.util.Comparator;
 import java.util.logging.Logger;
 import org.junit.jupiter.api.Test;
 
@@ -53,11 +55,8 @@ public class AppTest {
         Veterinaria veterinaria = new Veterinaria("Amigos Peludos");
 
         Mascota mascota1 = new Mascota(1, 9, 20.0, "Plata", "Kira", "Canino", "Husky", "Femenino");
-        Mascota mascota2 = new Mascota(1, 9, 20.0, "Plata", "Kira", "Canino", "Husky", "Femenino");
-
+        
         veterinaria.agregarMascota(mascota1);
-
-        veterinaria.agregarMascota(mascota2);
 
                 assertEquals(1, veterinaria.getListaMascotas().size());
 
@@ -94,6 +93,27 @@ public class AppTest {
 
         
         assertEquals(1, veterinaria.getListaMascotas().size());
+
+    }
+
+    @Test
+
+    public void listaMayoresDe10(){
+
+        Veterinaria veterinaria = new Veterinaria("Amigos peludos");
+
+        Mascota mascota1 = new Mascota(11, 21, 17.0, "Cafe", "Carlos", "Canino", "Pincher", "Masculino");
+        Mascota mascota2 = new Mascota(9, 21, 17.0, "Cafe", "Carlos", "Canino", "Pincher", "Masculino");
+
+
+        veterinaria.agregarMascota(mascota1);
+
+        veterinaria.agregarMascota(mascota2);
+
+
+
+        
+        assertEquals(1, veterinaria.listaMayoresDe10().size());
 
     }
 }
